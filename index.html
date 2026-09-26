@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Burger King | A Table for Stories</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --sage:#b8cdb9;
+    --sage-dark:#718c76;
+    --forest:#203c2d;
+    --deep:#13271d;
+    --cream:#f4efe3;
+    --paper:#ebe6d8;
+    --gold:#b18b4b;
+    --white:#fffdf7;
+    --muted:#647268;
+    --shadow:0 20px 60px rgba(32,60,45,.14);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(255,255,255,.45),transparent 25%),
+        radial-gradient(circle at 90% 40%,rgba(113,140,118,.15),transparent 30%),
+        var(--cream);
+    color:var(--forest);
+    overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(244,239,227,.86);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(32,60,45,.08);
+}
+
+.logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:29px;
+    font-weight:700;
+    letter-spacing:2px;
+    color:var(--forest);
+}
+
+.logo span{
+    color:var(--gold);
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:var(--forest);
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--gold);
+}
+
+.nav-btn{
+    background:var(--forest);
+    color:white;
+    text-decoration:none;
+    padding:11px 20px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    padding:150px 7% 80px;
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    align-items:center;
+    gap:60px;
+    position:relative;
+    background:
+        linear-gradient(135deg,#b8cdb9 0%,#d6e0d1 48%,#b7cbb8 100%);
+    overflow:hidden;
+}
+
+/* Botanical background */
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border:1px solid rgba(32,60,45,.15);
+    border-radius:50%;
+    right:-170px;
+    top:-130px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    border:1px solid rgba(32,60,45,.12);
+    border-radius:50%;
+    left:-160px;
+    bottom:-130px;
+}
+
+.leaf{
+    position:absolute;
+    font-size:90px;
+    opacity:.13;
+    color:var(--forest);
+}
+
+.leaf.one{
+    right:5%;
+    top:18%;
+    transform:rotate(25deg);
+}
+
+.leaf.two{
+    left:3%;
+    bottom:15%;
+    transform:rotate(-25deg);
+}
+
+.leaf.three{
+    right:38%;
+    bottom:5%;
+    font-size:60px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.eyebrow{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:var(--gold);
+    font-weight:700;
+    letter-spacing:4px;
+    font-size:12px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+.eyebrow::before{
+    content:"";
+    width:42px;
+    height:1px;
+    background:var(--gold);
+}
+
+.hero h1{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(70px,10vw,145px);
+    line-height:.75;
+    letter-spacing:-5px;
+    color:var(--forest);
+}
+
+.hero h1 span{
+    display:block;
+    color:var(--gold);
+    margin-left:55px;
+}
+
+.hero-description{
+    max-width:530px;
+    margin:35px 0;
+    color:#34483b;
+    line-height:1.8;
+    font-size:16px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.primary-btn,
+.secondary-btn{
+    padding:14px 25px;
+    border-radius:40px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+    transition:.3s;
+}
+
+.primary-btn{
+    background:var(--forest);
+    color:white;
+}
+
+.primary-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--shadow);
+}
+
+.secondary-btn{
+    border:1px solid var(--forest);
+    color:var(--forest);
+}
+
+.secondary-btn:hover{
+    background:var(--forest);
+    color:white;
+}
+
+/* Hero food */
+
+.hero-visual{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:2;
+}
+
+.food-frame{
+    width:min(470px,90vw);
+    height:470px;
+    border-radius:48% 52% 45% 55%;
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.8),rgba(244,239,227,.3));
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:0 35px 80px rgba(32,60,45,.2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    position:relative;
+    transform:rotate(2deg);
+}
+
+.food-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:45% 55% 50% 48%;
+    transform:rotate(-2deg);
+}
+
+.flower{
+    position:absolute;
+    font-size:45px;
+    z-index:5;
+}
+
+.flower.a{
+    top:-10px;
+    left:30px;
+}
+
+.flower.b{
+    right:-5px;
+    bottom:55px;
+}
+
+.flower.c{
+    left:-25px;
+    bottom:50px;
+    font-size:35px;
+}
+
+/* ================= SECTION COMMON ================= */
+
+section{
+    padding:100px 7%;
+}
+
+.section-label{
+    color:var(--gold);
+    letter-spacing:4px;
+    text-transform:uppercase;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.section-title{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(42px,6vw,75px);
+    line-height:.95;
+    color:var(--forest);
+}
+
+.section-intro{
+    max-width:620px;
+    line-height:1.8;
+    color:var(--muted);
+    margin-top:20px;
+}
+
+/* ================= JIHAN SECTION ================= */
+
+.jihan-section{
+    background:var(--forest);
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.jihan-section::before{
+    content:"❧";
+    position:absolute;
+    font-size:280px;
+    color:rgba(255,255,255,.035);
+    right:4%;
+    top:-50px;
+}
+
+.jihan-wrap{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:70px;
+    align-items:center;
+}
+
+.jihan-card{
+    min-height:410px;
+    border:1px solid rgba(255,255,255,.18);
+    padding:25px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    background:
+        linear-gradient(rgba(32,60,45,.5),rgba(32,60,45,.5)),
+        url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=80");
+    background-size:cover;
+    background-position:center;
+}
+
+.jihan-card::before,
+.jihan-card::after{
+    content:"";
+    position:absolute;
+    width:80px;
+    height:80px;
+    border:1px solid var(--gold);
+}
+
+.jihan-card::before{
+    top:12px;
+    left:12px;
+    border-right:none;
+    border-bottom:none;
+}
+
+.jihan-card::after{
+    right:12px;
+    bottom:12px;
+    border-left:none;
+    border-top:none;
+}
+
+.jihan-name{
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+.jihan-name small{
+    display:block;
+    color:#e3c98f;
+    letter-spacing:5px;
+    font-size:11px;
+    margin-bottom:15px;
+}
+
+.jihan-name h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:64px;
+    line-height:.85;
+    color:white;
+}
+
+.jihan-name h2 span{
+    color:#d6b76c;
+}
+
+.jihan-text .section-label{
+    color:#d6b76c;
+}
+
+.jihan-text h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:58px;
+    line-height:1;
+    margin-bottom:25px;
+    color:white;
+}
+
+.jihan-text p{
+    color:#d9e1da;
+    line-height:1.9;
+    margin-bottom:20px;
+}
+
+.warq{
+    display:inline-flex;
+    flex-direction:column;
+    padding:15px 22px;
+    border-left:3px solid var(--gold);
+    margin-top:10px;
+}
+
+.warq strong{
+    font-family:"Cormorant Garamond",serif;
+    font-size:27px;
+    letter-spacing:2px;
+    color:#d6b76c;
+}
+
+.warq span{
+    color:#bdc9bf;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+/* ================= MENU ================= */
+
+.menu-section{
+    background:
+        linear-gradient(rgba(235,230,216,.9),rgba(235,230,216,.9)),
+        url("https://images.unsplash.com/photo-1498579150354-977475b7ea0b?auto=format&fit=crop&w=1600&q=80");
+    background-size:cover;
+    background-attachment:fixed;
+}
+
+.menu-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:30px;
+    margin-bottom:50px;
+}
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.menu-card{
+    background:rgba(255,253,247,.8);
+    border:1px solid rgba(32,60,45,.1);
+    padding:15px;
+    box-shadow:0 15px 40px rgba(32,60,45,.08);
+    transition:.35s;
+}
+
+.menu-card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow);
+}
+
+.menu-image{
+    height:220px;
+    overflow:hidden;
+}
+
+.menu-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.menu-card:hover .menu-image img{
+    transform:scale(1.06);
+}
+
+.menu-info{
+    padding:20px 10px 12px;
+}
+
+.menu-info h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:29px;
+    color:var(--forest);
+}
+
+.menu-info p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+    margin:8px 0 15px;
+}
+
+.price{
+    color:var(--gold);
+    font-weight:700;
+}
+
+/* ================= EXPERIENCE ================= */
+
+.experience{
+    background:var(--sage);
+}
+
+.experience-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-top:50px;
+}
+
+.experience-card{
+    padding:35px 30px;
+    background:rgba(255,255,255,.35);
+    border:1px solid rgba(32,60,45,.1);
+}
+
+.icon{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.experience-card h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:31px;
+    margin-bottom:10px;
+}
+
+.experience-card p{
+    color:#506257;
+    line-height:1.7;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+    background:var(--cream);
+}
+
+.gallery-grid{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:220px;
+    gap:14px;
+}
+
+.gallery-item{
+    overflow:hidden;
+    position:relative;
+}
+
+.gallery-item:first-child{
+    grid-column:span 2;
+    grid-row:span 2;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+.gallery-item::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent,rgba(20,40,28,.25));
+}
+
+/* ================= BOOKING ================= */
+
+.booking{
+    background:
+        linear-gradient(135deg,rgba(32,60,45,.95),rgba(65,91,70,.94)),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80");
+    background-size:cover;
+    color:white;
+}
+
+.booking-wrap{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.booking .section-title{
+    color:white;
+}
+
+.booking .section-intro{
+    color:#d5dfd6;
+}
+
+.booking-form{
+    background:rgba(255,255,255,.09);
+    backdrop-filter:blur(15px);
+    padding:35px;
+    border:1px solid rgba(255,255,255,.18);
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.form-group{
+    margin-bottom:17px;
+}
+
+.form-group label{
+    display:block;
+    font-size:12px;
+    margin-bottom:7px;
+    color:#d8e0d9;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.08);
+    color:white;
+    outline:none;
+    font-family:inherit;
+}
+
+.form-group select option{
+    color:#203c2d;
+}
+
+.booking-form button{
+    width:100%;
+    border:none;
+    background:#d2b36b;
+    color:#1d3527;
+    padding:14px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.booking-form button:hover{
+    background:#e1c98d;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    background:var(--paper);
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:25px;
+    margin-top:45px;
+}
+
+.contact-card{
+    text-align:center;
+    padding:35px 20px;
+    background:rgba(255,255,255,.45);
+    border:1px solid rgba(32,60,45,.08);
+}
+
+.contact-card span{
+    font-size:28px;
+}
+
+.contact-card h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
+    margin:12px 0 6px;
+}
+
+.contact-card p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#102219;
+    color:white;
+    padding:50px 7% 25px;
+}
+
+.footer-main{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+    padding-bottom:35px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.footer-logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:42px;
+}
+
+.footer-logo span{
+    color:#d2b36b;
+}
+
+.footer-main p{
+    color:#9caaa0;
+    max-width:420px;
+    line-height:1.7;
+}
+
+.footer-bottom{
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    color:#87948c;
+    font-size:12px;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    background:var(--forest);
+    color:white;
+    padding:16px 22px;
+    border-left:4px solid var(--gold);
+    box-shadow:var(--shadow);
+    transform:translateY(120px);
+    opacity:0;
+    transition:.4s;
+    z-index:2000;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+        padding-top:130px;
+    }
+
+    .eyebrow{
+        justify-content:center;
+    }
+
+    .hero h1 span{
+        margin-left:0;
+    }
+
+    .hero-description{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .food-frame{
+        width:380px;
+        height:380px;
+    }
+
+    .jihan-wrap,
+    .booking-wrap{
+        grid-template-columns:1fr;
+    }
+
+    .menu-grid,
+    .experience-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    nav{
+        padding:15px 5%;
+    }
+
+    .logo{
+        font-size:23px;
+    }
+
+    .nav-btn{
+        padding:9px 14px;
+    }
+
+    section{
+        padding:75px 5%;
+    }
+
+    .hero{
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+    .hero h1{
+        font-size:76px;
+    }
+
+    .food-frame{
+        width:310px;
+        height:310px;
+    }
+
+    .jihan-name h2{
+        font-size:48px;
+    }
+
+    .jihan-text h2{
+        font-size:44px;
+    }
+
+    .menu-head{
+        display:block;
+    }
+
+    .menu-grid,
+    .experience-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+        grid-auto-rows:160px;
+    }
+
+    .gallery-item:first-child{
+        grid-column:span 2;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .footer-main,
+    .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        BURGER <span>KING</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#story">Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+    </ul>
+
+    <a href="#booking" class="nav-btn">Reserve a Table</a>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="leaf one">🌿</div>
+    <div class="leaf two">🍃</div>
+    <div class="leaf three">🌱</div>
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            A Restaurant of Stories
+        </div>
+
+        <h1>
+            BURGER
+            <span>KING</span>
+        </h1>
+
+        <p class="hero-description">
+            Where warm food meets quiet corners, botanical beauty,
+            meaningful conversations and stories that stay with you.
+            Welcome to a dining experience inspired by literature,
+            nature and timeless moments.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#menu" class="primary-btn">
+                Explore Menu
+            </a>
+
+            <a href="#story" class="secondary-btn">
+                Discover Our Story
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-visual">
+
+        <div class="food-frame">
+
+            <img
+            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+            alt="Delicious Burger">
+
+            <div class="flower a">🌸</div>
+            <div class="flower b">🌿</div>
+            <div class="flower c">🌼</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= JIHAN SECTION ================= -->
+
+<section class="jihan-section" id="story">
+
+    <div class="jihan-wrap">
+
+        <div class="jihan-card">
+
+            <div class="jihan-name">
+
+                <small>A LITERARY CORNER</small>
+
+                <h2>
+                    Jihan<br>
+                    <span>Sikander</span>
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="jihan-text">
+
+            <div class="section-label">
+                The Jihan Sikander Table
+            </div>
+
+            <h2>
+                Some tables<br>
+                hold stories.
+            </h2>
+
+            <p>
+                Inspired by the atmosphere of
+                <em>Jannat Kay Pattay</em>, this corner
+                is created for those who find beauty
+                in quiet conversations, meaningful
+                journeys and little details.
+            </p>
+
+            <p>
+                A table surrounded by leaves,
+                warm lights and the aroma of freshly
+                prepared food — a place where every
+                visit can become a memory.
+            </p>
+
+            <div class="warq">
+
+                <strong>WARQ-UL-JANNAH</strong>
+
+                <span>
+                    Leaves of Heaven · A literary tribute
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MENU ================= -->
+
+<section class="menu-section" id="menu">
+
+    <div class="menu-head">
+
+        <div>
+
+            <div class="section-label">
+                From Our Kitchen
+            </div>
+
+            <h2 class="section-title">
+                Crafted for<br>
+                Cravings.
+            </h2>
+
+        </div>
+
+        <p class="section-intro">
+            Fresh ingredients, rich flavors and carefully
+            prepared favorites — served with our signature
+            botanical dining experience.
+        </p>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+        <div class="menu-card">
+
+            <div class="menu-image">
+                <img
+                src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80"
+                alt="Classic Burger">
+            </div>
+
+            <div class="menu-info">
+
+                <h3>Classic Garden Burger</h3>
+
+                <p>
+                    Juicy grilled patty, fresh greens,
+                    cheese and our signature sauce.
+                </p>
+
+                <span class="price">Rs. 799</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+            <div class="menu-image">
+                <img
+                src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=80"
+                alt="French Fries">
+            </div>
+
+            <div class="menu-info">
+
+                <h3>Golden Herb Fries</h3>
+
+                <p>
+                    Crispy golden fries seasoned with
+                    our special herbs and spices.
+                </p>
+
+                <span class="price">Rs. 399</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+            <div class="menu-image">
+                <img
+                src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=900&q=80"
+                alt="Cheeseburger">
+            </div>
+
+            <div class="menu-info">
+
+                <h3>Royal Cheese Burger</h3>
+
+                <p>
+                    Double cheese, grilled patty,
+                    caramelized onions and house sauce.
+                </p>
+
+                <span class="price">Rs. 949</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+            <div class="menu-image">
+                <img
+                src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80"
+                alt="Chicken Meal">
+            </div>
+
+            <div class="menu-info">
+
+                <h3>Herb Chicken Platter</h3>
+
+                <p>
+                    Tender chicken served with
+                    fresh salad and signature dip.
+                </p>
+
+                <span class="price">Rs. 1,099</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+            <div class="menu-image">
+                <img
+                src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80"
+                alt="Dessert">
+            </div>
+
+            <div class="menu-info">
+
+                <h3>Golden Dessert</h3>
+
+                <p>
+                    A sweet ending with soft textures
+                    and a delicate caramel finish.
+                </p>
+
+                <span class="price">Rs. 499</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+            <div class="menu-image">
+                <img
+                src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=80"
+                alt="Milkshake">
+            </div>
+
+            <div class="menu-info">
+
+                <h3>Royal Chocolate Shake</h3>
+
+                <p>
+                    Thick chocolate shake topped
+                    with cream and chocolate drizzle.
+                </p>
+
+                <span class="price">Rs. 549</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EXPERIENCE ================= -->
+
+<section class="experience" id="experience">
+
+    <div class="section-label">
+        More Than Food
+    </div>
+
+    <h2 class="section-title">
+        An Experience<br>
+        Worth Remembering.
+    </h2>
+
+    <p class="section-intro">
+        Every detail is designed to make your visit
+        feel calm, warm and a little different.
+    </p>
+
+
+    <div class="experience-grid">
+
+        <div class="experience-card">
+
+            <div class="icon">🌿</div>
+
+            <h3>Botanical Ambience</h3>
+
+            <p>
+                Surrounded by greenery, flowers and
+                soft natural tones for a peaceful meal.
+            </p>
+
+        </div>
+
+
+        <div class="experience-card">
+
+            <div class="icon">📖</div>
+
+            <h3>Literary Corners</h3>
+
+            <p>
+                Quiet spaces inspired by stories,
+                characters and beautiful journeys.
+            </p>
+
+        </div>
+
+
+        <div class="experience-card">
+
+            <div class="icon">🍽️</div>
+
+            <h3>Fresh Flavours</h3>
+
+            <p>
+                Carefully prepared dishes made to
+                turn an ordinary meal into a memory.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GALLERY ================= -->
+
+<section class="gallery" id="gallery">
+
+    <div class="section-label">
+        A Glimpse Inside
+    </div>
+
+    <h2 class="section-title">
+        Taste. Stories.<br>
+        Little Moments.
+    </h2>
+
+
+    <div class="gallery-grid">
+
+        <div class="gallery-item">
+            <img
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80"
+            alt="Restaurant interior">
+        </div>
+
+        <div class="gallery-item">
+            <img
+            src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=80"
+            alt="Restaurant">
+        </div>
+
+        <div class="gallery-item">
+            <img
+            src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80"
+            alt="Dining">
+        </div>
+
+        <div class="gallery-item">
+            <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+            alt="Fresh food">
+        </div>
+
+        <div class="gallery-item">
+            <img
+            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80"
+            alt="Food">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BOOKING ================= -->
+
+<section class="booking" id="booking">
+
+    <div class="booking-wrap">
+
+        <div>
+
+            <div class="section-label">
+                Your Table Awaits
+            </div>
+
+            <h2 class="section-title">
+                Reserve a<br>
+                Little Moment.
+            </h2>
+
+            <p class="section-intro">
+                Choose your date, time and guests.
+                We'll keep a table ready for you.
+            </p>
+
+        </div>
+
+
+        <form class="booking-form" id="bookingForm">
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Your Name</label>
+
+                    <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Guests</label>
+
+                    <select id="guests" required>
+
+                        <option value="">Select</option>
+                        <option>1 Guest</option>
+                        <option>2 Guests</option>
+                        <option>3 Guests</option>
+                        <option>4 Guests</option>
+                        <option>5+ Guests</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Date</label>
+
+                    <input
+                    type="date"
+                    id="date"
+                    required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Time</label>
+
+                    <select id="time" required>
+
+                        <option value="">Choose time</option>
+                        <option>12:00 PM</option>
+                        <option>1:00 PM</option>
+                        <option>2:00 PM</option>
+                        <option>5:00 PM</option>
+                        <option>6:00 PM</option>
+                        <option>7:00 PM</option>
+                        <option>8:00 PM</option>
+                        <option>9:00 PM</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Special Request</label>
+
+                <input
+                type="text"
+                id="request"
+                placeholder="Birthday, quiet table, etc.">
+
+            </div>
+
+
+            <button type="submit">
+                Confirm Reservation
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact">
+
+    <div class="section-label">
+        Find Us
+    </div>
+
+    <h2 class="section-title">
+        Come Say Hello.
+    </h2>
+
+
+    <div class="contact-grid">
+
+        <div class="contact-card">
+
+            <span>📍</span>
+
+            <h3>Location</h3>
+
+            <p>
+                Main Boulevard, Lahore
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <span>☎️</span>
+
+            <h3>Call Us</h3>
+
+            <p>
+                +92 300 1234567
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <span>✉️</span>
+
+            <h3>Email</h3>
+
+            <p>
+                hello@burgerking.com
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-main">
+
+        <div>
+
+            <div class="footer-logo">
+                BURGER <span>KING</span>
+            </div>
+
+            <p>
+                A botanical dining space where
+                food, stories and beautiful moments
+                meet around one table.
+            </p>
+
+        </div>
+
+        <div>
+            🌿 &nbsp; Eat slowly. &nbsp; Read deeply. &nbsp; Live beautifully.
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 Burger King. All rights reserved.
+        </span>
+
+        <span>
+            Designed with stories & greenery.
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+    Your table request has been received 🌿
+</div>
+
+
+<script>
+
+/* ================= BOOKING ================= */
+
+const bookingForm = document.getElementById("bookingForm");
+const toast = document.getElementById("toast");
+
+bookingForm.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const guests = document.getElementById("guests").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+
+    if(!name || !guests || !date || !time){
+        alert("Please complete all required fields.");
+        return;
+    }
+
+    toast.textContent =
+        `Thank you ${name}! Your table request for ${guests} at ${time} has been received 🌿`;
+
+    toast.classList.add("show");
+
+    bookingForm.reset();
+
+    setTimeout(function(){
+        toast.classList.remove("show");
+    },4000);
+
+});
+
+
+/* ================= DATE ================= */
+
+const dateInput = document.getElementById("date");
+
+const today = new Date();
+
+const year = today.getFullYear();
+const month = String(today.getMonth()+1).padStart(2,"0");
+const day = String(today.getDate()).padStart(2,"0");
+
+dateInput.min = `${year}-${month}-${day}`;
+
+
+/* ================= NAVBAR SCROLL ================= */
+
+const nav = document.querySelector("nav");
+
+window.addEventListener("scroll", function(){
+
+    if(window.scrollY > 80){
+        nav.style.boxShadow =
+            "0 10px 30px rgba(32,60,45,.10)";
+    }else{
+        nav.style.boxShadow = "none";
+    }
+
+});
+
+
+/* ================= IMAGE FALLBACK ================= */
+
+document.querySelectorAll("img").forEach(function(img){
+
+    img.addEventListener("error",function(){
+
+        this.style.background = "#b8cdb9";
+        this.style.objectFit = "contain";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
