@@ -408,7 +408,7 @@ section{
     position:relative;
     background:
         linear-gradient(135deg,rgba(15,35,24,.16),rgba(32,60,45,.30)),
-        url("PASTE-IMAGE-URL-OR-BASE64-HERE");
+        url("https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=85");
     background-size:cover;
     background-position:center;
     box-shadow:inset 0 0 0 7px rgba(184,205,185,.08), 0 18px 45px rgba(0,0,0,.16);
@@ -1725,14 +1725,17 @@ window.addEventListener("scroll", function(){
 /* ================= IMAGE FALLBACK ================= */
 
 document.querySelectorAll("img").forEach(function(img){
-
-    img.addEventListener("error",function(){
-
-        this.style.background = "#b8cdb9";
-        this.style.objectFit = "contain";
-
-    });
-
+    img.addEventListener("error", function(){
+        // Keep the layout attractive if an external photo cannot load.
+        this.style.display = "none";
+        const fallback = document.createElement("div");
+        fallback.textContent = this.alt || "Fresh food & beautiful moments";
+        fallback.style.cssText =
+            "width:100%;height:100%;min-height:180px;display:flex;align-items:center;" +
+            "justify-content:center;text-align:center;padding:24px;color:#203c2d;" +
+            "background:linear-gradient(135deg,#b8cdb9,#f4efe3);font-family:serif;font-size:22px;";
+        this.parentElement.appendChild(fallback);
+    }, { once: true });
 });
 
 </script>
